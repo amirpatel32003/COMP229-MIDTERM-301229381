@@ -19,8 +19,9 @@
               <th>Product id</th>
               <th class="text-center">Product name</th>
               <th class="text-center">Descriptionr</th>
-              <th class="text-center">price</th>
-              <th class="text-center"></th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Edit</th>
+              <th class="text-center">Check</th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +39,9 @@
                 <!-- ------------------------ -->
                 <a href="/products/<%= products[count]._id%>" class="btn btn-primary">Edit</a>
               </td>
+              <td class="text-center">
+                <input type="radio" name="checkboxes" id="<%= products[count]._id%>">
+              </td>
             </tr>
             <% } %>
           </tbody>
@@ -47,8 +51,17 @@
     <!-- ------------------------ -->
     <!-- ADD the DELETE BUTTON HERE -->
     <!-- ------------------------ -->
-    <a href="" class="btn btn-warning btn-sm">
-      <i class="fas fa-trash"></i> Delete</a>
+    <div onclick="deleteProduct()" class="btn btn-warning btn-sm" id="delete_btn">
+      <i class="fas fa-trash"></i> Delete</div>
+      <script>
+        
+        function deleteProduct(){
+          let id = document.querySelector("input[type='radio']:checked").id;
+          
+          location.href = '/products/delete/' + id;
+          
+        }
+      </script>
   </main>
   
 
