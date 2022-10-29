@@ -1,3 +1,4 @@
+//AmirPatel-301229381
 // modules required for routing
 let express = require("express");
 let router = express.Router();
@@ -103,7 +104,7 @@ router.get("/delete/:id", (req, res, next) => {
    * ADD CODE HERE *
    *****************/
   console.log(req.params.id);
-  console.log('amir fuck boy');
+
 
   product.remove({_id : req.params.id}, (err) => {
     if(err){
