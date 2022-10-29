@@ -57,6 +57,18 @@ router.get("/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+
+  console.log(req.params.id);
+
+  product.findById({_id : req.params.id}, (err, product) => {
+    if(err){
+      console.log(err);
+      res.end(err);
+    }
+    else{
+      res.render('products/details', {title: 'Edit a Product', products : product});
+    }
+  })
 });
 
 // POST - process the information passed from the details form and update the document
@@ -64,6 +76,25 @@ router.post("/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+  console.log(req.params.id);
+
+  let editedProduct = product({
+    _id : req.params.id,
+    Productid: req.body.Productid,
+    Productname: req.body.Productname,
+    Description: req.body.Description,
+    Price: req.body.Price
+  })
+
+  product.update({_id : req.params.id}, editedProduct, (err, product) => {
+    if(err){
+      console.log(err);
+      res.end(err);
+    }
+    else{
+      res.redirect('/products');
+    }
+  })
 });
 
 // GET - process the delete
