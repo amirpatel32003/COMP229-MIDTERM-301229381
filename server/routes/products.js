@@ -34,6 +34,22 @@ router.post("/add", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+  let newProduct = product({
+    Productid: req.body.Productid,
+    Productname: req.body.Productname,
+    Description: req.body.Description,
+    Price: req.body.Price
+  })
+
+  product.create(newProduct, (err, product) => {
+    if(err){
+      console.log(err);
+      res.end(err);
+    }
+    else{
+      res.redirect('/products');
+    }
+  })
 });
 
 // GET the Product Details page in order to edit an existing Product
