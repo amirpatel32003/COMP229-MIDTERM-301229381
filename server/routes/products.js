@@ -26,6 +26,7 @@ router.get("/add", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+  res.render('products/add', {title : 'Add a Product'});
 });
 
 // POST process the Product Details page and create a new Product - CREATE
